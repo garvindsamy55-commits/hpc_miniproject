@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cloudburst-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OPERATING_MODE=local
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DEFAULT_WORKER_COUNT=4
+      - AZURE_REGION=eastus
+      - AZURE_STORAGE_ACCOUNT_NAME=cloudburststorage
+      - AZURE_BLOB_INPUT_CONTAINER=cloudburst-input-container-demo
+      - AZURE_BLOB_OUTPUT_CONTAINER=cloudburst-output-container-demo
+    volumes:
+      - ./backend/storage:/app/storage
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cloudburst-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    restart: unless-stopped

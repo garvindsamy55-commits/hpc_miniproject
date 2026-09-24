@@ -1,0 +1,38 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-east-1",
+      "eventTime": "2026-09-24T10:00:00.000Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "AWS:AROASAMPLEPRINCIPAL"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "192.0.2.1"
+      },
+      "responseElements": {
+        "x-amz-request-id": "C3D13FE58DE4C810",
+        "x-amz-id-2": "Fzb7nY+gN2u7jA="
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "CloudBurstS3Trigger",
+        "bucket": {
+          "name": "cloudburst-input-bucket-demo",
+          "ownerIdentity": {
+            "principalId": "A3NL5PHTHTTKL0"
+          },
+          "arn": "arn:aws:s3:::cloudburst-input-bucket-demo"
+        },
+        "object": {
+          "key": "telemetry_data.log",
+          "size": 1048576,
+          "eTag": "0123456789abcdef0123456789abcdef",
+          "sequencer": "0A1B2C3D4E5F678901"
+        }
+      }
+    }
+  ]
+}
